@@ -30,7 +30,6 @@ public class PortfolioController {
         while (gUN.folioNumberExists(folioNumber));
         return portfolioRepository.save(portfolio);
     }
-
     @DeleteMapping("/delete/{id}")
     public void deletePortfolio(@PathVariable("id") int id) {
         portfolioRepository.deleteById(id);

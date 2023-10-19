@@ -14,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/portfolio/**")
-                        .allowedOrigins("http://localhost:3000") // Adjust the origin based on your React app URL
+                        .allowedOrigins("*") // Adjust the origin based on your React app URL
                         .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };

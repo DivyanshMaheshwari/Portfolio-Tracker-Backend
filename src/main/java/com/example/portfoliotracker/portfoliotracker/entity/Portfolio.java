@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Table(name = "portfolio_details")
 public class Portfolio {
@@ -27,6 +28,7 @@ public class Portfolio {
     public void setInvestmentAmount(String investmentAmount) {
         this.investmentAmount = investmentAmount;
     }
+
     @Column(name = "investment_amount")
     private String investmentAmount;
 //    @OneToMany(mappedBy = "portfolio")

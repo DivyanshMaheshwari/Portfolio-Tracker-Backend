@@ -24,13 +24,6 @@ public class PortfolioController {
 
     @PostMapping("/create")
     public Portfolio createPortfolio(@RequestBody Portfolio portfolio) {
-        int folioNumber;
-        do {
-            folioNumber = gun.generateUniqueNumber();
-            // Set the folio number and save the portfolio
-            portfolio.setPortfolio_id(folioNumber);
-        }
-        while (gun.folioNumberExists(folioNumber));
         return portfolioRepository.save(portfolio);
     }
 

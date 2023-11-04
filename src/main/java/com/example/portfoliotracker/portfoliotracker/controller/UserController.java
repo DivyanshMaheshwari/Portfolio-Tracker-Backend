@@ -1,13 +1,15 @@
 package com.example.portfoliotracker.portfoliotracker.controller;
 
 import com.example.portfoliotracker.portfoliotracker.entity.User;
-import com.example.portfoliotracker.portfoliotracker.repo.UserRepository;
 import com.example.portfoliotracker.portfoliotracker.generateUniqueNumber;
+import com.example.portfoliotracker.portfoliotracker.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/portfolio")
@@ -50,5 +52,15 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User is not registered. Please register the user first");
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+    }
+
+    @GetMapping("/user/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable("id") int id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            return ResponseEntity.ok(user.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
